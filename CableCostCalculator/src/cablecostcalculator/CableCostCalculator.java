@@ -30,41 +30,44 @@ public class CableCostCalculator extends Application {
     
     @Override
     public void start(Stage primaryStage){
-        primaryStage.setTitle("Cable Cost Calculator");
+        primaryStage.setTitle("Cable Cost Calculator"); //sets the title for the window
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.TOP_LEFT);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
         
-        Scene scene = new Scene(grid, 500, 375);
+        Scene scene = new Scene(grid, 500, 375); //sets how big the app will be
         primaryStage.setScene(scene);
         
         
         Text scenetitle = new Text("Build Quality!");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
-        grid.add(scenetitle, 0, 0, 1, 1);
+        grid.add(scenetitle, 0, 0, 1, 1); //(value, row, column, columnspan, rowspan
         
         Label cableCostPerBox = new Label("Cost per foot of cable:");
         grid.add(cableCostPerBox, 0, 1);
-        
-       
-        
+              
         TextField cableCostField = new TextField();
         grid.add(cableCostField, 0, 2);
+        
+        cableCostField.setOnAction(new EventHandler<ActionEvent>(){
+                public void handle(ActionEvent event){
+                    String cableCostString = cableCostField.getText();                                     
+                }
+        });
         
         Label desiredLengthBox = new Label("Final cable length:");
         grid.add(desiredLengthBox, 1, 1);
         
-            cableCostField.setOnAction(new EventHandler<ActionEvent>(){
-                public void handle(ActionEvent event){
-                    String cableCostString = cableCostField.getText();
-                    System.out.println(cableCostString);                   
-                }
-        });
-        
         TextField desiredLengthField = new TextField();
         grid.add(desiredLengthField, 1, 2);
+        
+            desiredLengthField.setOnAction(new EventHandler<ActionEvent>(){   
+                public void handle(ActionEvent event){
+                    String desiredLengthString = desiredLengthField.getText();                  
+            }
+        });
         
         Label numberOfCablesBox = new Label("How many cables:");
         grid.add(numberOfCablesBox, 2, 1);
@@ -72,9 +75,9 @@ public class CableCostCalculator extends Application {
         TextField numberOfCablesField = new TextField();
         grid.add(numberOfCablesField, 2, 2);
         
-            desiredLengthField.setOnAction(new EventHandler<ActionEvent>(){
+            numberOfCablesField.setOnAction(new EventHandler<ActionEvent>(){   
                 public void handle(ActionEvent event){
-                    String desiredLengthString = desiredLengthField.getText();                  
+                    String numberOfCablesString = numberOfCablesField.getText();                  
             }
         });
         
